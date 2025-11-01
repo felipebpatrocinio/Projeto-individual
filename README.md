@@ -6,4 +6,5 @@ Seu objetivo é auxiliar estudantes de violino a organizar e acompanhar sua roti
 
 O sistema permite que o usuário registre a data do estudo, o tempo estudado em minutos e acompanhe seu progresso por meio de uma dashboard. 📊
 
-![](file:///home/felipe/SPTECH/Projeto%20individual/Logotipo.png)
+![](https:///home/felipe/SPTECH/Projeto%20individual/Logotipo.png)
+
