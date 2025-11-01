@@ -4,4 +4,6 @@ O Violin Study é um projeto desenvolvido no primeiro semestre do meu curso de A
 
 Seu objetivo é auxiliar estudantes de violino a organizar e acompanhar sua rotina de estudos de forma prática e visual.
 
-O sistema permite que o usuário registre a data do estudo, o tempo estudado em minutos e acompanhe seu progresso por meio de uma dashboard.
+O sistema permite que o usuário registre a data do estudo, o tempo estudado em minutos e acompanhe seu progresso por meio de uma dashboard. 📊
+
+
