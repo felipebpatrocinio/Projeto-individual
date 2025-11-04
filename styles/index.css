@@ -1,4 +1,4 @@
-main {
+  main {
     display: flex;
     background: linear-gradient(135deg, #f5f5f5, #e4d9cc);
     justify-content: flex-end;
@@ -10,10 +10,31 @@ main {
     margin-left: 100px;
 }
 
-h1 {
+.titulo h1 {
     font-size: 55px;
 }
 
 p {
     font-size: 20px;
 }
+
+.sobre_violino {
+    display: flex;
+    background: linear-gradient(135deg, #f5f5f5, #e4d9cc);
+    justify-content: space-between  ;
+    align-items: flex-start;
+    height: 600px;
+}
+
+.sobre_violino h1 {
+    font-size: 40px;
+}
+
+.conteudo {
+    margin: 60px 0 0 100px;
+}
+
+.sobre_violino img {
+    margin: 50px 70px 0 0;
+}
+

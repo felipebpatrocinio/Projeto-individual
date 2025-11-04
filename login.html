@@ -4,8 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles/navbar_footer.css">
+    <link rel="stylesheet" href="styles/login.css">
 </head>
 <body>
-    
+    <header>
+        <img class="logotipo" src="assets/Logotipo.png">
+        <nav>
+            <ul class="navbar-links">
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#">Cadastro</a></li>
+            </ul>
+        </nav>
+        <a href="#"><button>Entrar</button></a>
+    </header>
+
+    <main>
+        <img style="width: 520px; height: 767.5px;" src="assets/imagem_login.jpg">
+        <div class="container_login">
+            <h1>Olá de volta!</h1>
+            <input type="text" placeholder="Email" id="input_email">
+            <input type="text" placeholder="Senha" id="input_senha">
+            <div class="erro_login" id="div_erro"></div>
+            <button><b>Entrar</b></button>
+            <li>Não possui conta? <a href="#"><b>Cadastre-se</b></a></li>
+        </div>
+    </main>
 </body>
 </html>

@@ -1,10 +1,9 @@
 
-
 body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #f9f3ed;
+    background: linear-gradient(135deg, #f5f5f5, #e4d9cc);
 }
 
 .logotipo {
@@ -20,7 +19,7 @@ li, a, button {
     text-decoration: none;
 }
 
-button {
+header button {
     padding: 10px 20px;
     background-color: black;
     border: none;
@@ -40,6 +39,7 @@ header {
     padding: 0 15px 0 15px;
     background-color: #4f0f11;
     height: 70px;
+    position: sticky;
 }
 
 .navbar-links {
