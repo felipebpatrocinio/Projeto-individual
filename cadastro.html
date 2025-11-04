@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,47 @@
     <link rel="stylesheet" href="styles/navbar_footer.css">
     <link rel="stylesheet" href="styles/cadastro.css">
 </head>
+
 <body>
-    
+    <header>
+        <img class="logotipo" src="assets/Logotipo.png">
+        <nav>
+            <ul class="navbar-links">
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#">Cadastro</a></li>
+            </ul>
+        </nav>
+        <a href="#"><button>Entrar</button></a>
+    </header>
+
+    <main>
+        <div class="container_cadastro">
+            <h1>Seja bem vindo(a)!</h1>
+
+            <div class="cadastro_formulario">
+                <input type="text"  placeholder="Nome" id="input_nome">
+                <input type="text" placeholder="Sobrenome" id="input_sobrenome"> <br>
+                <input type="text" placeholder="Email" id="input_email">
+                <select name="Nível de habilidade" id="select_nivel">
+                    <option selected disabled value="#">Nível de habilidade</option>
+                    <option value="Iniciante">Iniciante</option>
+                    <option value="Intermediário">Intermediário</option>
+                    <option value="Avançado">Avançado</option>
+                </select> <br>
+                <input type="text" placeholder="Senha" id="input_senha">
+                <input type="text" placeholder="Confirme sua senha" id="input_confirmeSenha">
+                <div class="erro_validacao">
+                    <div class="erro_senha" id="div_erro_senha"></div>
+                    <div class="erro_confirmacao" id="div_erro_confirmacao"></div>
+                </div>
+            </div>
+            <div class="erro_campo" id="div_erro_campo"></div>
+            <button><b>Criar conta</b></button>
+            <li>Já possui conta? <a href="#"><b>Entrar</b></a></li>
+        </div>
+    </main>
 </body>
+
 </html>

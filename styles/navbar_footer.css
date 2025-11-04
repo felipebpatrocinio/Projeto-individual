@@ -13,7 +13,7 @@ body {
     margin-top: 20px;
 }
 
-li, a, button {
+header li, a, button {
     font-size: 18px;
     color: #f9f3ed;
     text-decoration: none;
@@ -62,6 +62,6 @@ header {
 
     .logotipo {
         width: 80px; 
-            height: 80px; 
+        height: 80px; 
     }
 }
