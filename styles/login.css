@@ -18,7 +18,7 @@ main {
     align-items: center;
 }
 
-h1 {
+.container_login h1 {
     font-size: 38px;
 }
 
@@ -30,6 +30,7 @@ input {
     border-radius: 12px;
     background-color: transparent;
 }
+
 .erro_login {
     margin-bottom: 15px;
 }
