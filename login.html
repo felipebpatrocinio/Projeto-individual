@@ -12,13 +12,13 @@
         <img class="logotipo" src="assets/Logotipo.png">
         <nav>
             <ul class="navbar-links">
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Contato</a></li>
-                <li><a href="#">Cadastro</a></li>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#sobre_projeto">Sobre</a></li>
+                <li><a href="index.html#footer">Contato</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
             </ul>
         </nav>
-        <a href="#"><button>Entrar</button></a>
+        <a href="login.html"><button onclick="entrar()">Entrar</button></a>
     </header>
 
     <main>
@@ -29,8 +29,14 @@
             <input type="text" placeholder="Senha" id="input_senha">
             <div class="erro_login" id="div_erro_login"></div>
             <button><b>Entrar</b></button>
-            <li>Não possui conta? <a href="#"><b>Cadastre-se</b></a></li>
+            <li>Não possui conta? <a href="cadastro.html"><b>Cadastre-se</b></a></li>
         </div>
     </main>
 </body>
 </html>
+
+<script>
+    function entrar() {
+        
+    }
+</script>

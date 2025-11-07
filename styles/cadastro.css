@@ -14,7 +14,7 @@ main button {
     margin-bottom: 20px;
     border-radius: 10px;
     cursor: pointer;
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 main h1 {
@@ -68,15 +68,20 @@ main a {
 
 .erro_validacao {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     font-size: 14px;
-    color: rgb(196, 8, 8);;
+    color: rgb(196, 8, 8);
+}
+
+#div_erro_confirmacao {
+    margin-left: auto;
 }
 
 .erro_campo {
     font-size: 14px;
     color: rgb(196, 8, 8);;
-    margin-top: 10px;
+    margin-top: 0+px;
+    opacity: 0;
 }
 
 main li {

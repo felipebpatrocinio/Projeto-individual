@@ -1,13 +1,17 @@
-main {
+header {
+    position: sticky;
+}
+
+.inicio {
     display: flex;
-    background: linear-gradient(135deg, #f5f5f5, #e4d9cc);
+    background: transparent;
     justify-content: flex-end;
     align-items: center;
 }
 
 .titulo {
     margin-right: auto;
-    margin-left: 100px;
+    margin-left: 50px;
 }
 
 .titulo h1 {
@@ -23,7 +27,7 @@ main {
 
 .sobre_violino {
     display: flex;
-    background: linear-gradient(135deg, #f5f5f5, #e4d9cc);
+    background: transparent;
     justify-content: space-between  ;
     align-items: flex-start;
     height: 600px;
@@ -39,6 +43,7 @@ main {
 
 .sobre_violino img {
     margin: 50px 70px 0 0;
+    border-radius: 22px;
 }
 
 /* Fim da seção 1 */
@@ -48,7 +53,7 @@ main {
 
 .aprender_violino {
     display: flex;
-    background: linear-gradient(135deg, #f5f5f5, #e4d9cc);
+    background: transparent;
     flex-direction: column  ;
     justify-content: flex-start;
     align-items: center;
@@ -97,7 +102,7 @@ main {
 
 .sobre_projeto {
     display: flex;
-    background: linear-gradient(135deg, #f5f5f5, #e4d9cc);
+    background: transparent;
     justify-content: space-between;
     align-items: flex-start;
     height: 600px;
@@ -112,8 +117,9 @@ main {
 }
 
 .sobre_projeto img {
-    width: 600px; 
-    height: 500px;
+    width: 550px; 
+    height: 450px;
+    margin-right: 60px;
 }
 
 /* Fim da seção 3 */
@@ -123,7 +129,7 @@ main {
 
 .proposta_projeto {
     display: flex;
-    background: linear-gradient(135deg, #f5f5f5, #e4d9cc);
+    background: transparent;
     justify-content: center;
     align-items: flex-start;
     height: 600px;
@@ -161,7 +167,7 @@ main {
 
 .pergunta_footer {
     display: flex;
-    background: linear-gradient(135deg, #f5f5f5, #e4d9cc);
+    background: transparent;
     justify-content: flex-start;
     align-items: flex-start;
     height: 500px;
