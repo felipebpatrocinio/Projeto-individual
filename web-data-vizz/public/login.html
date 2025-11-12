@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/styles/navbar_footer.css">
     <link rel="stylesheet" href="css/styles/login.css">
 </head>
+
 <body>
     <header>
         <img class="logotipo" src="assets/Logotipo.png">
@@ -18,7 +20,7 @@
                 <li><a href="cadastro.html">Cadastro</a></li>
             </ul>
         </nav>
-        <a href="login.html"><button onclick="entrar()">Entrar</button></a>
+        <a href="login.html"><button>Entrar</button></a>
     </header>
 
     <main>
@@ -26,17 +28,71 @@
         <div class="container_login">
             <h1>Olá de volta!</h1>
             <input type="text" placeholder="Email" id="input_email">
-            <input type="text" placeholder="Senha" id="input_senha">
+            <input type="password" placeholder="Senha" id="input_senha">
             <div class="erro_login" id="div_erro_login"></div>
-            <button><b>Entrar</b></button>
+            <button onclick="entrar()"><b>Entrar</b></button>
             <li>Não possui conta? <a href="cadastro.html"><b>Cadastre-se</b></a></li>
         </div>
     </main>
 </body>
+
 </html>
 
 <script>
     function entrar() {
-        
+        var email = input_email.value;
+        var senha = input_senha.value;
+
+        if (email == "" || senha == "") {
+            alert('Preencha todos os campos!')
+            return false;
+        } else {
+            console.log("FORM LOGIN: ", email);
+            console.log("FORM SENHA: ", senha);
+
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: email,
+                    senhaServer: senha
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.idUsuario; 
+                        /* sessionStorage.AQUARIOS = JSON.stringify(json.aquarios) */
+                    });
+
+                    window.location.href = "telaUsuario.html";
+
+                } else {
+
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+            return false;
+
+        }
+
+
     }
 </script>
