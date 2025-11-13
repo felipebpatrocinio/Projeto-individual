@@ -1,0 +1,60 @@
+var metaModel = require("../models/metaModel");
+
+function registrarMeta(req, res) {
+    var dtInicio= req.body.dtInicioServer;
+    var dtFinal = req.body.dtFinalServer;
+    var totalDia = req.body.totalDiaServer;
+
+    if (dtInicio == undefined) {
+        res.status(400).send("A data de início está indefinida!");
+    } else if (dtFinal == undefined) {
+        res.status(400).send("A data final está indefinido!");
+    } else if (totalDia == undefined) {
+        res.status(400).send("O total de dia está indefinido!");
+    } else {
+
+        metaModel.registrarMeta(dtInicio, dtFinal, totalDia)
+            .then(
+                function (resultadoRegistrarMeta) {
+                    console.log(`\nResultados encontrados: ${resultadoRegistrarMeta.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultadoRegistrarMeta)}`); // transforma JSON em String
+
+                    if (resultadoRegistrarMeta.length == 1) {
+                        console.log(resultadoRegistrarMeta);
+
+                        /* aquarioModel.buscarAquariosPorEmpresa(resultadoRegistrarMeta[0].idUsuario)
+                            .then((resultadoAquarios) => {
+                                if (resultadoAquarios.length >= 0) {
+                                    res.json({
+                                        idUsuario: resultadoRegistrarMeta[0].idUsuario,
+                                        email: resultadoRegistrarMeta[0].email,
+                                        nome: resultadoRegistrarMeta[0].nome,
+                                        senha: resultadoRegistrarMeta[0].senha,
+                                        //aquarios: resultadoAquarios
+                                    });
+                                } else {
+                                    res.status(204).json({ aquarios: [] });
+                                }
+                            })
+                        */
+                        
+                    } else if (resultadoRegistrarMeta.length == 0) {
+                        res.status(403).send("Registro(s) inválido(s)");
+                    } else {
+                        res.status(403).send("Não foi encontrado esse usuário.");
+                    }
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o registro! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
+module.exports = {
+    registrarMeta
+}

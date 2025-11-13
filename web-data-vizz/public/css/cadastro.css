@@ -1,6 +1,10 @@
-  main {
+body {
+    background-image: url(fundo_cadastro.svg); 
+    background-size: cover;
+}
+
+main {
     display: flex;
-    background-color: bl;
     justify-content: center;
     align-items: center;
     height: 765px;
@@ -8,8 +12,8 @@
 
 main button {
     background-color: #4f0f11;
-    width: 16vh;
-    height: 4vh;
+    width: 150px;
+    height: 35px;
     border: none;
     margin-bottom: 20px;
     border-radius: 10px;
@@ -28,14 +32,15 @@ main a {
 
 .container_cadastro {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
-    border: 1px solid black;
+    border: transparent;
     border-radius: 12px;
     background: linear-gradient(135deg, #f5f5f5, #e4d9cc);
-    width: 470px;
-    height: 400px;
+    opacity: 0.85;
+    width: 550px;
+    height: 500px;
 }
 
 .cadastro_formulario {
@@ -43,8 +48,8 @@ main a {
 }
 
 .cadastro_formulario input  {
-    width: 200px;
-    height: 30px;
+    width: 240px;
+    height: 38px;
     background: transparent;
     border: 1px solid black;
     border-radius: 7px;
@@ -55,12 +60,12 @@ main a {
 }
 
 .cadastro_formulario #input_nome, #input_email, #input_senha {
-    margin: 20px 25px 0 0;
+    margin: 35px 25px 0 0;
 }
 
 .cadastro_formulario select {
-    width: 206px;
-    height: 35px;
+    width: 247px;
+    height: 41px;
     background: transparent;
     border: 1px solid black;
     border-radius: 7px;

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/styles/telaUSuario.css">
+    <link rel="stylesheet" href="css/telaUSuario.css">
 </head>
 
 <body onload="window.location.href='#dashboard'">
@@ -93,7 +93,8 @@
                     <option value="Dedilhado">Dedilhado</option>
                 </select>
             </label>
-            <button><b>Registrar estudo</b></button>
+            <div id="div_erroCampo" class="erroCampo">Preencha todos os campos!</div>
+            <button onclick="registrarEstudo()"><b>Registrar estudo</b></button>
         </div>
         <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, provident!</span>
     </section>
@@ -110,18 +111,19 @@
             <div class="formulario_novaMeta">
                 <label>
                     Prazo de início
-                    <input type="date">
+                    <input type="date" id="input_dtInicio">
                 </label>
                 <label>
                     Prazo final
-                    <input type="date">
+                    <input type="date" id="input_dtFinal">
                 </label>
                 <label>
                     Dias de estudo
-                    <input type="number">
+                    <input type="text" id="input_totalDia">
                 </label>
             </div>
-            <button><b>Registrar meta</b></button>
+
+            <button onclick="registrarMeta()"><b>Registrar meta</b></button>
         </div>
     </section>
     <!--Fim Metas-->
@@ -184,5 +186,100 @@
 
     function sair() {
         window.location.href = "login.html";
+    }
+
+    function registrarEstudo() {
+        var dtEstudo = input_dtEstudo.value;
+        var tempoEstudo = Number(input_tempo.value);
+        var dificuldade = select_dificuldade.value;
+
+        if (dtEstudo == "" || tempoEstudo == 0 || dificuldade == "#") {
+            div_erroCampo.style.opacity = "1";
+        } else {
+            fetch("/estudo/registrarEstudo", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    dtEstudoServer: dtEstudo,
+                    tempoEstudoServer: tempoEstudo,
+                    dificuldadeServer: dificuldade
+
+                })
+            }).then(function (resposta) {
+                console.log(resposta)
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    /* resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.idUsuario; 
+                    }); */
+
+                } else {
+
+                    console.log("Erro ao tentar registrar o estudo");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+        }
+    }
+
+    function registrarMeta() {
+        var dtInicio = input_dtInicio.value;
+        var dtFinal = input_dtFinal.value;
+        var totalDia = input_totalDia.value;
+
+        if (dtInicio == "" || dtFinal == "" || totalDia == 0) {
+            div_erroMeta.style.opacity = "1";
+        } else {
+            fetch("/meta/registrarMeta", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    dtInicioServer: dtInicio,
+                    dtFinalServer: dtFinal,
+                    totalDiaServer: totalDia
+                })
+            }).then(function (resposta) {
+                console.log(resposta)
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    /* resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.idUsuario; 
+                    }); */
+
+                } else {
+
+                    console.log("Erro ao tentar registrar a meta");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+        }
     }
 </script>
