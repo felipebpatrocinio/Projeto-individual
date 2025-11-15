@@ -192,6 +192,7 @@
         var dtEstudo = input_dtEstudo.value;
         var tempoEstudo = Number(input_tempo.value);
         var dificuldade = select_dificuldade.value;
+        var fkUsuario = sessionStorage.ID_USUARIO;
 
         if (dtEstudo == "" || tempoEstudo == 0 || dificuldade == "#") {
             div_erroCampo.style.opacity = "1";
@@ -204,7 +205,8 @@
                 body: JSON.stringify({
                     dtEstudoServer: dtEstudo,
                     tempoEstudoServer: tempoEstudo,
-                    dificuldadeServer: dificuldade
+                    dificuldadeServer: dificuldade,
+                    fkUsuarioServer: fkUsuario
 
                 })
             }).then(function (resposta) {

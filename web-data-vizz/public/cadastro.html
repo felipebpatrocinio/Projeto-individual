@@ -7,8 +7,8 @@
     <title>Document</title>
 
     <script src="./js/sessao.js"></script>
-    <link rel="stylesheet" href="styles/navbar_footer.css">
-    <link rel="stylesheet" href="styles/cadastro.css">
+    <link rel="stylesheet" href="css/navbar_footer.css">
+    <link rel="stylesheet" href="css/cadastro.css">
 </head>
 
 <body>
@@ -147,8 +147,6 @@
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        // crie um atributo que recebe o valor recuperado aqui
-                        // Agora vá para o arquivo routes/usuario.js
                         nomeServer: nome,
                         sobrenomeServer: sobrenome,
                         emailServer: email,
@@ -161,7 +159,8 @@
                         console.log("resposta: ", resposta);
 
                         if (resposta.ok) {
-
+                            div_erro_senha.style.opacity = "0";
+                            div_erro_confirmacao.style.opacity = "0";
                             div_erro_campo.style.opacity = "1";
                             div_erro_campo.innerHTML =
                                 "Seu cadastro foi feito com sucesso!";

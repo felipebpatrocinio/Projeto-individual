@@ -37,6 +37,10 @@ header {
     font-size: 40px;
 }
 
+.sobre_violino span {
+    font-size: 20px;
+}
+
 .sv_conteudo {
     margin: 100px 60px 0 100px;
 }
@@ -59,6 +63,7 @@ header {
     align-items: center;
     height: 600px;
     margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .av_conteudo {
@@ -72,10 +77,13 @@ header {
     font-size: 40px;
 }
 
+.aprender_violino span {
+    font-size: 20px;
+}
+
 .beneficio {
     display: flex;
     flex-direction: column;
-    margin-right: 355px;
 }
 
 .beneficio1, .beneficio2, .beneficio3, .beneficio4 {
@@ -96,6 +104,7 @@ header {
     align-items: center;
 }
 
+
 /* Fim da seção 2 */
 
 
@@ -107,27 +116,31 @@ header {
     background: transparent;
     justify-content: space-between;
     align-items: flex-start;
-    height: 600px;
+    height: 550px;
 }
 
 .sobre_mim h1 {
     font-size: 40px;
 }
 
-.sp_conteudo {
-    margin: 60px 0 0 100px;
+.sobre_mim span {
+    font-size: 18px;
+}
+
+.sm_conteudo {
+    margin-left: 70px;
 }
 
 .sobre_mim img {
-    width: 550px; 
     height: 450px;
-    margin-right: 60px;
+    border-radius: 18px;
+    margin-right: 70px;
 }
 
 /* Fim da seção 3 */
 
 
-/* Seção 4 - Proppstas do projeto */
+/* Seção 4 - Propostas do projeto */
 
 .proposta_projeto {
     display: flex;
@@ -151,15 +164,43 @@ header {
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
-    width: 120vh;
+    width: 130vh;
+}
+
+.proposta1 {
+    background-image: url(1.png);
+    background-size: cover;
+}   
+
+.proposta2 {
+    background-image: url(2.png);
+    background-size: cover;
+}
+.proposta3 {
+    background-image: url(3.png);
+    background-size: cover;
 }
 
 .proposta1, .proposta2, .proposta3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     background-color: black;
-    color: aliceblue;
-    width: 220px;
-    height: 330px;
+    color: #f9f3ed;
+    width: 300px;
+    height: 420px;
     border-radius: 12px;
+}
+
+.proposta1 h1, .proposta2 h1, .proposta3 h1 {
+    font-size: 30px;
+    margin: 0 0 20px 10px;
+    color: #bb944b;
+/* color: #f9f3ed; */
+}
+
+.proposta1 span, .proposta2 span, .proposta3 span {
+    margin: 0 0 70px 10px;
 }
 
 /* Fim da seção 4 */

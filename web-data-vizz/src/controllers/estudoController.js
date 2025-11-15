@@ -4,6 +4,7 @@ function registrarEstudo(req, res) {
     var dtEstudo = req.body.dtEstudoServer;
     var tempoEstudo = req.body.tempoEstudoServer;
     var dificuldade = req.body.dificuldadeServer;
+    var fkUsuario = req.body.fkUsuarioServer;
 
     if (dtEstudo == undefined) {
         res.status(400).send("A data de estudo está indefinida!");
@@ -11,9 +12,11 @@ function registrarEstudo(req, res) {
         res.status(400).send("O tempo de estudo está indefinido!");
     } else if (dificuldade == undefined) {
         res.status(400).send("A dificuldade está indefinida!");
+    } else if (fkUsuario == undefined) {
+        res.status(400).send("A fkUsuario está indefinida!");
     } else {
 
-        estudoModel.registrarEstudo(dtEstudo, tempoEstudo, dificuldade)
+        estudoModel.registrarEstudo(dtEstudo, tempoEstudo, dificuldade, fkUsuario)
             .then(
                 function (resultadoRegistrarEstudo) {
                     console.log(`\nResultados encontrados: ${resultadoRegistrarEstudo.length}`);
