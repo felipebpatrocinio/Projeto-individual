@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/telaUSuario.css">
+    <link rel="stylesheet" href="css/telaUsuario.css">
 </head>
 
-<body onload="window.location.href='#dashboard'">
+<body onload="carregarPagina()">
     <!--Side Bar-->
     <aside class="sidebar">
         <header class="sidebar_header">
@@ -58,10 +58,25 @@
     <!--Dashboard-->
     <section class="dashboard" id="dashboard">
         <div class="kpis">
-            <div class="kpi1">OI</div>
-            <div class="kpi2">OI</div>
-            <div class="kpi3">OI</div>
-            <div class="kpi4">OI</div>
+            <div class="kpi1">
+                Dias totais estudados
+
+            </div>
+
+            <div class="kpi2">
+                OI
+
+            </div>
+
+            <div class="kpi3">
+                OI
+
+            </div>
+
+            <div class="kpi4">
+                OI
+
+            </div>
         </div>
         <div class="graficos">
             <div class="grafico1">OI</div>
@@ -124,6 +139,8 @@
             </div>
 
             <button onclick="registrarMeta()"><b>Registrar meta</b></button>
+            <span class="metaRegistrada" id="metaRegistrada">Meta registrada!</span>
+            <span class="erroMeta" id="erroMeta">Preencha todos os campos!</span>
         </div>
     </section>
     <!--Fim Metas-->
@@ -136,16 +153,20 @@
         </div>
 
         <label>
-            Nome
-            <input type="number">
+            <b>Nome</b>
+            <input type="text" id="input_nomeConfig">
         </label>
         <label>
-            Sobrenome
-            <input type="number">
+            <b>Sobrenome</b>
+            <input type="text" id="input_sobrenomeConfig">
         </label>
         <label>
-            Nível
-            <input type="number">
+            <b>Nível</b>
+            <select id="select_nivelConfig">
+                <option value="Iniciante">Iniciante</option>
+                <option value="Intermediário">Intermediário</option>
+                <option value="Avançado">Avançado</option>
+            </select>
         </label>
         <button><b>Salvar alterações</b></button>
 
@@ -156,6 +177,11 @@
 </html>
 
 <script>
+    function carregarPagina() {
+        window.location.href = '#dashboard';
+        var nome = sessionStorage.NOME_USUARIO;
+        mensagem_usuario.innerHTML = `Olá, ${nome}!`;
+    }
     function irParaDashboard() {
         dashboard.style.display = 'flex';
         estudo.style.display = 'none';
@@ -182,6 +208,10 @@
         estudo.style.display = 'none';
         meta.style.display = 'none';
         configuracao.style.display = 'flex';
+
+        var nomeConfig = sessionStorage.NOME_USUARIO;
+
+        input_nomeConfig.value = `${nomeConfig}`;
     }
 
     function sair() {
@@ -215,14 +245,6 @@
                 if (resposta.ok) {
                     console.log(resposta);
 
-                    /* resposta.json().then(json => {
-                        console.log(json);
-                        console.log(JSON.stringify(json));
-                        sessionStorage.EMAIL_USUARIO = json.email;
-                        sessionStorage.NOME_USUARIO = json.nome;
-                        sessionStorage.ID_USUARIO = json.idUsuario; 
-                    }); */
-
                 } else {
 
                     console.log("Erro ao tentar registrar o estudo");
@@ -242,10 +264,13 @@
         var dtInicio = input_dtInicio.value;
         var dtFinal = input_dtFinal.value;
         var totalDia = input_totalDia.value;
+        var fkUsuario = sessionStorage.ID_USUARIO;
 
         if (dtInicio == "" || dtFinal == "" || totalDia == 0) {
-            div_erroMeta.style.opacity = "1";
+            erroMeta.style.display = "flex";
         } else {
+            erroMeta.style.display = "none";
+
             fetch("/meta/registrarMeta", {
                 method: "POST",
                 headers: {
@@ -254,7 +279,8 @@
                 body: JSON.stringify({
                     dtInicioServer: dtInicio,
                     dtFinalServer: dtFinal,
-                    totalDiaServer: totalDia
+                    totalDiaServer: totalDia,
+                    fkUsuarioServer: fkUsuario
                 })
             }).then(function (resposta) {
                 console.log(resposta)
@@ -262,17 +288,19 @@
                 if (resposta.ok) {
                     console.log(resposta);
 
-                    /* resposta.json().then(json => {
-                        console.log(json);
-                        console.log(JSON.stringify(json));
-                        sessionStorage.EMAIL_USUARIO = json.email;
-                        sessionStorage.NOME_USUARIO = json.nome;
-                        sessionStorage.ID_USUARIO = json.idUsuario; 
-                    }); */
+                    metaRegistrada.style.opacity = '1';
+
 
                 } else {
 
                     console.log("Erro ao tentar registrar a meta");
+
+                    metaRegistrada.style.opacity = '1';
+
+                    setTimeout(() => {
+                        metaRegistrada.style.opacity = '0';
+                    }, 2000);
+                    
 
                     resposta.text().then(texto => {
                         console.error(texto);

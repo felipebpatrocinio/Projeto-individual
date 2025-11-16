@@ -4,6 +4,7 @@ function registrarMeta(req, res) {
     var dtInicio= req.body.dtInicioServer;
     var dtFinal = req.body.dtFinalServer;
     var totalDia = req.body.totalDiaServer;
+    var fkUsuario = req.body.fkUsuarioServer;
 
     if (dtInicio == undefined) {
         res.status(400).send("A data de início está indefinida!");
@@ -11,9 +12,11 @@ function registrarMeta(req, res) {
         res.status(400).send("A data final está indefinido!");
     } else if (totalDia == undefined) {
         res.status(400).send("O total de dia está indefinido!");
+    } else if (fkUsuario == undefined) {
+        res.status(400).send("O usuário está indefinido!");
     } else {
 
-        metaModel.registrarMeta(dtInicio, dtFinal, totalDia)
+        metaModel.registrarMeta(dtInicio, dtFinal, totalDia, fkUsuario)
             .then(
                 function (resultadoRegistrarMeta) {
                     console.log(`\nResultados encontrados: ${resultadoRegistrarMeta.length}`);

@@ -90,28 +90,28 @@ header p {
 .kpis .kpi1 {
     width: 200px;
     height: 200px;
-    background-color: gray;
+    background-color: #e9e9e9;
     margin-right: 60px;
 }
 
 .kpis .kpi2 {
     width: 200px;
     height: 200px;
-    background-color: gray;
+    background-color: #e9e9e9;
     margin-right: 60px;
 }
 
 .kpis .kpi3 {
     width: 200px;
     height: 200px;
-    background-color: gray;
+    background-color: #e9e9e9;
     margin-right: 60px;
 }
 
 .kpis .kpi4 {
     width: 350px;
     height: 200px;
-    background-color: gray;
+    background-color: #e9e9e9;
 }
 
 .graficos {
@@ -122,14 +122,14 @@ header p {
 .graficos .grafico1 {
     width: 550px;
     height: 400px;
-    background-color: gray;
+    background-color: #e9e9e9;
     margin-right: 30px;
 }
 
 .graficos .grafico2 {
     width: 550px;
     height: 400px;
-    background-color: gray;
+    background-color: #e9e9e9;
 }
 
 /* Fim da Dashboard */
@@ -261,6 +261,21 @@ header p {
     font-size: 17px;
 }
 
+.nova_meta .metaRegistrada {
+    color: green;
+    margin: 10px 0 0 430px;
+    font-size: 20px;
+    opacity: 0;
+
+}
+
+.erroMeta {
+    color: red;
+    font-size: 20px;
+    margin: 0 0 0 390px;
+    display: none;
+}
+
 .nova_meta label {
     display: flex;
     flex-direction: column;
@@ -308,6 +323,16 @@ header p {
     height:40px;
     background: transparent;
     border: 1px solid black;
+    font-size: 17px;
+    margin-top: 5px;
+}
+
+.configuracao select {
+    width: 1000px;
+    height:40px;
+    background: transparent;
+    border: 1px solid black;
+    margin-top: 5px;
 }
 
 .configuracao button {

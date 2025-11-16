@@ -152,6 +152,7 @@ header {
 
 .proposta_projeto h1 {
     font-size: 40px;
+    margin-right: 720px;
 }
 
 .pp_conteudo {
@@ -176,6 +177,7 @@ header {
     background-image: url(2.png);
     background-size: cover;
 }
+
 .proposta3 {
     background-image: url(3.png);
     background-size: cover;
@@ -206,36 +208,53 @@ header {
 /* Fim da seção 4 */
 
 
-/* Seção 5 - Perguntas */
+/* Seção 5 - ODS */
 
-.pergunta_footer {
+.ods {
     display: flex;
+    flex-direction: column;
     background: transparent;
     justify-content: flex-start;
-    align-items: flex-start;
-    height: 500px;
+    align-items: center;
+    height: 600px;
+    width: 100%;
+    margin: 20px 0 20px 0;
 }
 
-.pf_conteudo {
+.ods_conteudo {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin: 50px 0 0 100px;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 70px;
+    width: 92vw;
 }
 
-.pergunta_footer h1 {
+.ods h1 {
     font-size: 40px;
+}   
+
+.ods_conteudo img {
+    height: 300px;
+    border-radius: 12px;
 }
 
-.container_pergunta {
+.ods3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ods4 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
 }
 
-.pergunta1, .pergunta2, .pergunta3 {
-    font-size: 30px;
-    margin-top: 20px;
+.ods3 span, .ods4 span {
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 /* Footer */
@@ -259,20 +278,48 @@ footer {
     margin-top: 7px;
 }
 
+/* Fim da ods */
 
+/* Entre em contato */
 
+.contato {
+    display: flex;
+    flex-direction: row;
+    background: transparent;
+    justify-content: center;
+    align-items: flex-start;
+    height: 500px;
+    width: 100%;
+    margin: 0px 0 20px 0;
+}
 
+.formulario_contato {
+    display: flex;
+    flex-direction: column;
+}
 
+.formulario_contato h1 {
+    font-size: 40px;
+    margin-top: 0;
+}
 
+.cttNome, .cttEmail {
+    background: transparent;
+    width: 400px;
+    height: 40px;
+    margin-bottom: 15px;
+}
 
+.cttTexto {
+    background: transparent;
+    width: 400px;
+    height: 200px;
+    margin-bottom: 15px;
+}
 
-
-
-
-
-
-
-
-
-
+.botaoEnviar {
+    width: 200px;
+    height: 35px;
+    background-color: #4f0f11;
+}
 
