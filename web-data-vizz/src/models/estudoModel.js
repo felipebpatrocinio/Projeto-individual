@@ -12,6 +12,15 @@ function registrarEstudo(dtEstudo, tempoEstudo, dificuldade, fkUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function buscarEstudosPorUsuario(idUsuario) {
+
+  var instrucaoSql = `SELECT COUNT(idEstudo), SUM(tempoEstudo) FROM estudo WHERE fkUsuario = ${idUsuario};`;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+} 
+
 module.exports = {
-    registrarEstudo
+    registrarEstudo,
+    buscarEstudosPorUsuario
 };

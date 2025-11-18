@@ -176,7 +176,10 @@
 
                 return false;
 
-                alert('Seu cadastro foi feito com sucesso!');
+                div_erro_senha.style.opacity = "0";
+                div_erro_confirmacao.style.opacity = "0";
+                div_erro_campo.style.opacity = "1";
+                div_erro_campo.innerHTML = "Seu cadastro foi feito com sucesso!";
                 window.location.href = "login.html";
             }
         }

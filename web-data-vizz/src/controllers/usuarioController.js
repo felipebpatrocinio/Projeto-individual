@@ -26,9 +26,10 @@ function autenticar(req, res) {
                                     res.json({
                                         idUsuario: resultadoAutenticar[0].idUsuario,
                                         email: resultadoAutenticar[0].email,
+                                        nivel: resultadoAutenticar[0].nivel,
                                         nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha,
-                                        //aquarios: resultadoAquarios
+                                        sobrenome: resultadoAutenticar[0].sobrenome,
+                                        senha: resultadoAutenticar[0].senha
                                     });
                                 } else {
                                     res.status(204).json({ aquarios: [] });
@@ -59,7 +60,6 @@ function cadastrar(req, res) {
     var email = req.body.emailServer;
     var nivel = req.body.nivelServer;
     var senha = req.body.senhaServer;
-    /* var fkEmpresa = req.body.idEmpresaVincularServer; */
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -77,7 +77,7 @@ function cadastrar(req, res) {
     } */ else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, sobrenome, email, nivel, senha /*fkEmpresa*/)
+        usuarioModel.cadastrar(nome, sobrenome, email, nivel, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);

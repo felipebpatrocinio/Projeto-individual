@@ -40,7 +40,7 @@ function registrarEstudo(req, res) {
                                 }
                             })
                         */
-                        
+
                     } else if (resultadoRegistrarEstudo.length == 0) {
                         res.status(403).send("Registro(s) inválido(s)");
                     } else {
@@ -57,6 +57,24 @@ function registrarEstudo(req, res) {
     }
 }
 
+function buscarEstudosPorUsuario(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    estudoModel.buscarEstudosPorUsuario(idUsuario).then((resultado) => {
+        if (resultado.length >= 0) {
+            res.status(200).json(resultado);
+
+        } else {
+            res.status(204).json([]);
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os estudos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
-    registrarEstudo
+    registrarEstudo,
+    buscarEstudosPorUsuario
 }

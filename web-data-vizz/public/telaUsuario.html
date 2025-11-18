@@ -58,24 +58,27 @@
     <!--Dashboard-->
     <section class="dashboard" id="dashboard">
         <div class="kpis">
-            <div class="kpi1">
-                Dias totais estudados
+            <div class="kpi1" id="kpi1">
+                <p>Dias totais estudados</p>
+                <span><b>7</b></span>
 
             </div>
 
-            <div class="kpi2">
-                OI
+            <div class="kpi2" id="kpi2">
+                <p>Maior dificuldade</p>
+                <span><b>Arcada</b></span>
 
             </div>
 
-            <div class="kpi3">
-                OI
-
+            <div class="kpi3" id="kpi3">
+                <p>Tempo total estudado</p>
+                <span><b>21 H</b></span>
             </div>
 
-            <div class="kpi4">
-                OI
-
+            <div class="kpi4" id="kpi4">
+                <p>Total de metas</p>
+                <span>Gráfico de progresso</span>
+                <span id="span_dtFinal">até 01/12/2025</span>
             </div>
         </div>
         <div class="graficos">
@@ -168,7 +171,6 @@
                 <option value="Avançado">Avançado</option>
             </select>
         </label>
-        <button><b>Salvar alterações</b></button>
 
     </section>
     <!--Fim Configurações-->
@@ -178,7 +180,7 @@
 
 <script>
     function carregarPagina() {
-        window.location.href = '#dashboard';
+        window.location.href = '#estudo';
         var nome = sessionStorage.NOME_USUARIO;
         mensagem_usuario.innerHTML = `Olá, ${nome}!`;
     }
@@ -187,6 +189,10 @@
         estudo.style.display = 'none';
         meta.style.display = 'none';
         configuracao.style.display = 'none';
+
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        buscarEstudoPorUsuario(idUsuario);
     }
 
     function irParaEstudo() {
@@ -210,8 +216,12 @@
         configuracao.style.display = 'flex';
 
         var nomeConfig = sessionStorage.NOME_USUARIO;
+        var sobrenomeConfig = sessionStorage.SOBRENOME_USUARIO;
+        var nivelConfig = sessionStorage.NIVEL_USUARIO;
 
         input_nomeConfig.value = `${nomeConfig}`;
+        input_sobrenomeConfig.value = `${sobrenomeConfig}`;
+        select_nivelConfig.value = `${nivelConfig}`;
     }
 
     function sair() {
@@ -227,6 +237,7 @@
         if (dtEstudo == "" || tempoEstudo == 0 || dificuldade == "#") {
             div_erroCampo.style.opacity = "1";
         } else {
+
             fetch("/estudo/registrarEstudo", {
                 method: "POST",
                 headers: {
@@ -248,6 +259,14 @@
                 } else {
 
                     console.log("Erro ao tentar registrar o estudo");
+
+                    div_erroCampo.style.opacity = "1";
+                    div_erroCampo.style.color = `green`;
+                    div_erroCampo.innerHTML = `Estudo registrado com sucesso!`;
+
+                    setTimeout(() => {
+                        div_erroCampo.style.opacity = "0";
+                    }, 1200);
 
                     resposta.text().then(texto => {
                         console.error(texto);
@@ -300,7 +319,7 @@
                     setTimeout(() => {
                         metaRegistrada.style.opacity = '0';
                     }, 2000);
-                    
+
 
                     resposta.text().then(texto => {
                         console.error(texto);
@@ -311,5 +330,9 @@
                 console.log(erro);
             })
         }
+    }
+
+    function plotarDados() {
+
     }
 </script>

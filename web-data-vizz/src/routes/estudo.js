@@ -8,4 +8,8 @@ router.post("/registrarEstudo", function (req, res) {
     estudoController.registrarEstudo(req, res);
 })
 
+router.get("/:idUsuario", function (req, res) {
+  estudoControllerController.buscarEstudosPorUsuario(req, res);
+});
+
 module.exports = router;
