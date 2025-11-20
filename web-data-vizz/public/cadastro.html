@@ -42,7 +42,7 @@
                 <input type="password" placeholder="Senha" id="input_senha">
                 <input type="password" placeholder="Confirme sua senha" id="input_confirmeSenha">
                 <div class="erro_validacao">
-                    <div style="opacity: 0;" class="erro_senha" id="div_erro_senha">A senha deve conter no mínimo 8
+                    <div style="opacity: 0;" class="erro_senha" id="div_erro_senha">Deve conter no mínimo 8
                         caracteres.</div>
                     <div style="opacity: 0;" class="erro_confirmacao" id="div_erro_confirmacao">As senhas devem ser
                         iguais! </div>
@@ -118,6 +118,16 @@
             input_confirmeSenha.style.border = bordaPreta;
             div_erro_campo.style.opacity = "0";
 
+            var senhaCorreta = false;
+
+            for (var i = 0; i < listaNumeros.length; i++) {
+                numeroAtual = listaNumeros[i];
+
+                if (senha.includes(numeroAtual)) {
+                    senhaCorreta = true;
+                }
+            }
+
             var emailValido = (email.endsWith('.com') || email.endsWith('.school')) && email.includes("@") && (email.toLowerCase() == email);
 
             /* Validação do campo email */
@@ -129,13 +139,21 @@
                 div_erro_campo.style.opacity = "0";
                 input_email.style.border = bordaPreta;
                 input_senha.style.border = bordaVermelha;
+                div_erro_senha.innerHTML = "Deve conter no mínimo 8 caracteres.";
                 div_erro_senha.style.opacity = "1";
+            } else if (senhaCorreta == false) { /* Validação se não contém número na senha */
+                div_erro_campo.style.opacity = "0";
+                input_email.style.border = bordaPreta;
+                input_senha.style.border = bordaVermelha;
+                div_erro_senha.style.opacity = "1";
+                div_erro_senha.innerHTML = "Deve conter no mínimo um número.";
             } else if (confirmacaoSenha != senha) { /* Validação do campo confirmação de senha */
                 input_senha.style.border = bordaPreta;
                 input_confirmeSenha.style.border = bordaVermelha;
                 div_erro_senha.style.opacity = "0";
                 div_erro_confirmacao.style.opacity = "1";
             } else { /* Cenário correto */
+                div_erro_senha.style.opacity = "0";
                 div_erro_confirmacao.style.opacity = "0";
                 input_confirmeSenha.style.border = bordaPreta;
 
@@ -162,6 +180,7 @@
                             div_erro_senha.style.opacity = "0";
                             div_erro_confirmacao.style.opacity = "0";
                             div_erro_campo.style.opacity = "1";
+                            div_erro_campo.style.color = "green";
                             div_erro_campo.innerHTML =
                                 "Seu cadastro foi feito com sucesso!";
 
@@ -179,6 +198,7 @@
                 div_erro_senha.style.opacity = "0";
                 div_erro_confirmacao.style.opacity = "0";
                 div_erro_campo.style.opacity = "1";
+                div_erro_campo.style.color = "green";
                 div_erro_campo.innerHTML = "Seu cadastro foi feito com sucesso!";
                 window.location.href = "login.html";
             }

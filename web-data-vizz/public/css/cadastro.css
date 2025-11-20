@@ -37,6 +37,7 @@ main a {
     align-items: center;
     border: transparent;
     border-radius: 12px;
+    box-shadow: 0 0 12px #f9f3ed;
     background: linear-gradient(135deg, #f5f5f5, #e4d9cc);
     opacity: 0.85;
     width: 550px;

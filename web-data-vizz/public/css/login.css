@@ -24,7 +24,7 @@ main {
 
 input {
     width: 50vh;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     height: 6vh;
     border: 1px solid black;
     border-radius: 12px;
@@ -32,7 +32,9 @@ input {
 }
 
 .erro_login {
+    color: red;
     margin-bottom: 15px;
+    opacity: 0;
 }
 
 .container_login button {

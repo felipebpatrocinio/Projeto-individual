@@ -257,27 +257,6 @@ header {
     margin-bottom: 10px;
 }
 
-/* Footer */
-
-footer {
-    display: flex;
-    height: 200px;
-    align-items: center;
-    justify-content: space-around;
-    background-color: #25090a;
-    color: white;
-}
-
-.rede_social {
-    display: flex;
-    flex-direction: column;
-    font-size: 20px;
-}
-
-.icones_social img {
-    margin-top: 7px;
-}
-
 /* Fim da ods */
 
 /* Entre em contato */
@@ -323,3 +302,23 @@ footer {
     background-color: #4f0f11;
 }
 
+/* Footer */
+
+footer {
+    display: flex;
+    height: 200px;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #25090a;
+    color: white;
+}
+
+.rede_social {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.icones_social img {
+    margin-top: 7px;
+}

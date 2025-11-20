@@ -1,5 +1,6 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
+var estudoModel = require("../models/estudoModel");
+const { buscarEstudosPorUsuario } = require("../controllers/estudoController");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -20,9 +21,9 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].idUsuario)
-                            .then((resultadoAquarios) => {
-                                if (resultadoAquarios.length >= 0) {
+                        estudoModel.buscarEstudosPorUsuario(resultadoAutenticar[0].idUsuario)
+                            .then((resultadoEstudos) => {
+                                if (resultadoEstudos.length >= 0) {
                                     res.json({
                                         idUsuario: resultadoAutenticar[0].idUsuario,
                                         email: resultadoAutenticar[0].email,
@@ -32,10 +33,11 @@ function autenticar(req, res) {
                                         senha: resultadoAutenticar[0].senha
                                     });
                                 } else {
-                                    res.status(204).json({ aquarios: [] });
+                                    res.status(204).json({ estudos: [] });
                                 }
-                            })
-                        
+                            }) 
+
+
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -97,5 +99,6 @@ function cadastrar(req, res) {
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    buscarEstudosPorUsuario
 }

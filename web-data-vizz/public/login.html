@@ -29,7 +29,7 @@
             <h1>Olá de volta!</h1>
             <input type="text" placeholder="Email" id="input_email">
             <input type="password" placeholder="Senha" id="input_senha">
-            <div class="erro_login" id="div_erro_login"></div>
+            <div class="erro_login" id="div_erro_login">Preencha todos os campos!</div>
             <button onclick="entrar()"><b>Entrar</b></button>
             <li>Não possui conta? <a href="cadastro.html"><b>Cadastre-se</b></a></li>
         </div>
@@ -44,7 +44,7 @@
         var senha = input_senha.value;
 
         if (email == "" || senha == "") {
-            alert('Preencha todos os campos!')
+            div_erro_login.style.opacity = '1';
             return false;
         } else {
             console.log("FORM LOGIN: ", email);

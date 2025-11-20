@@ -60,7 +60,7 @@
         <div class="kpis">
             <div class="kpi1" id="kpi1">
                 <p>Dias totais estudados</p>
-                <span><b>7</b></span>
+                <span id="qtdEstudo"><b>7</b></span>
 
             </div>
 
@@ -72,7 +72,7 @@
 
             <div class="kpi3" id="kpi3">
                 <p>Tempo total estudado</p>
-                <span><b>21 H</b></span>
+                <span id="tempoEstudo"><b>21 H</b></span>
             </div>
 
             <div class="kpi4" id="kpi4">
@@ -192,7 +192,37 @@
 
         var idUsuario = sessionStorage.ID_USUARIO;
 
-        buscarEstudoPorUsuario(idUsuario);
+        fetch(`/estudo/buscarEstudosPorUsuario${idUsuario}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+
+                /*body: JSON.stringify({
+                    idUsuarioServer: idUsuario
+                    // passar o id
+                })*/
+            }
+        }).then(function (resposta) {
+            console.log(resposta)
+            console.log('Entrei no then');
+
+            if (resposta.ok) {
+                console.log(resposta);
+                // pegar o json e transformar em variveis3
+                var qtdEstudo = json.COUNT(idEstudo);
+            } else {
+
+                console.log("Erro ao tentar coletar dados de KPI's");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log('Entrei no catch');
+        })
     }
 
     function irParaEstudo() {
