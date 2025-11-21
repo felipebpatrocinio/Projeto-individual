@@ -60,8 +60,7 @@
         <div class="kpis">
             <div class="kpi1" id="kpi1">
                 <p>Dias totais estudados</p>
-                <span id="qtdEstudo"><b>7</b></span>
-
+                <b><span id="qtdEstudo"></span></b>
             </div>
 
             <div class="kpi2" id="kpi2">
@@ -72,12 +71,12 @@
 
             <div class="kpi3" id="kpi3">
                 <p>Tempo total estudado</p>
-                <span id="tempoEstudo"><b>21 H</b></span>
+                <b><span id="tempoEstudo"></span></b>
             </div>
 
             <div class="kpi4" id="kpi4">
-                <p>Total de metas</p>
-                <span>Gráfico de progresso</span>
+                <p>Tempo médio de estudo</p>
+                <span><b id="tempoMedio"></b></span>
                 <span id="span_dtFinal">até 01/12/2025</span>
             </div>
         </div>
@@ -184,6 +183,7 @@
         var nome = sessionStorage.NOME_USUARIO;
         mensagem_usuario.innerHTML = `Olá, ${nome}!`;
     }
+    
     function irParaDashboard() {
         dashboard.style.display = 'flex';
         estudo.style.display = 'none';
@@ -192,24 +192,27 @@
 
         var idUsuario = sessionStorage.ID_USUARIO;
 
-        fetch(`/estudo/buscarEstudosPorUsuario${idUsuario}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
+        fetch(`/estudo/buscarEstudosPorUsuario/${idUsuario}`, {
 
-                /*body: JSON.stringify({
-                    idUsuarioServer: idUsuario
-                    // passar o id
-                })*/
-            }
         }).then(function (resposta) {
             console.log(resposta)
-            console.log('Entrei no then');
+            console.log('Entrei no then do estudo');
 
             if (resposta.ok) {
-                console.log(resposta);
-                // pegar o json e transformar em variveis3
-                var qtdEstudo = json.COUNT(idEstudo);
+                console.log(resposta)
+
+                resposta.json().then(json => {
+                    console.log(json)
+                    tempoEstudo = json.tempoEstudo;
+                    totalEstudo = json.totalEstudo;
+                    tempoMedio = json.tempoMedio;
+                    console.log(tempoEstudo, totalEstudo, tempoMedio)
+                    document.getElementById('qtdEstudo').textContent = totalEstudo;
+                    document.getElementById('tempoEstudo').textContent = tempoEstudo;
+                    document.getElementById('tempoMedio').textContent = tempoMedio;
+                })
+
+                 
             } else {
 
                 console.log("Erro ao tentar coletar dados de KPI's");
@@ -223,6 +226,37 @@
             console.log(erro);
             console.log('Entrei no catch');
         })
+
+
+        fetch(`/meta/buscarMetasPorUsuario/${idUsuario}`, {
+
+        }).then(function (resposta) {
+            console.log(resposta)
+            console.log('Entrei no then da meta');
+
+            if (resposta.ok) {
+                console.log(resposta)
+
+                resposta.json().then(json => {
+                    console.log(json)
+                    totalMeta = json.totalMeta;
+                    console.log(totalMeta)
+                })
+
+            } else {
+
+                console.log("Erro ao tentar coletar dados das metas");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log('Entrei no catch');
+        })
+
     }
 
     function irParaEstudo() {
@@ -278,7 +312,6 @@
                     tempoEstudoServer: tempoEstudo,
                     dificuldadeServer: dificuldade,
                     fkUsuarioServer: fkUsuario
-
                 })
             }).then(function (resposta) {
                 console.log(resposta)

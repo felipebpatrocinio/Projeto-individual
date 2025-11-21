@@ -8,7 +8,7 @@ router.post("/registrarEstudo", function (req, res) {
     estudoController.registrarEstudo(req, res);
 })
 
-router.get("/:idUsuario", function (req, res) {
+router.get("/buscarEstudosPorUsuario/:idUsuario", function (req, res) {
   estudoController.buscarEstudosPorUsuario(req, res);
 });
 

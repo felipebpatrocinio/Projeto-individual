@@ -62,7 +62,7 @@ function buscarEstudosPorUsuario(req, res) {
 
     estudoModel.buscarEstudosPorUsuario(idUsuario).then((resultado) => {
         if (resultado.length >= 0) {
-            res.status(200).json(resultado);
+            res.status(200).send(resultado[0])
 
         } else {
             res.status(204).json([]);

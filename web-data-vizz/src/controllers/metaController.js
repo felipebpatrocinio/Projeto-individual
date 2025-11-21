@@ -58,6 +58,24 @@ function registrarMeta(req, res) {
 
 }
 
+function buscarMetasPorUsuario(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    metaModel.buscarMetasPorUsuario(idUsuario).then((resultado) => {
+        if (resultado.length >= 0) {
+            res.status(200).send(resultado[0])
+
+        } else {
+            res.status(204).json([]);
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as metas: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
-    registrarMeta
+    registrarMeta,
+    buscarMetasPorUsuario
 }

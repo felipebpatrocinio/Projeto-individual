@@ -14,7 +14,7 @@ function registrarEstudo(dtEstudo, tempoEstudo, dificuldade, fkUsuario) {
 
 function buscarEstudosPorUsuario(idUsuario) {
 
-  var instrucaoSql = `SELECT COUNT(idEstudo), SUM(tempoEstudo) FROM estudo WHERE fkUsuario = ${idUsuario};`;
+  var instrucaoSql = `SELECT COUNT(idEstudo) as totalEstudo, SUM(tempoEstudo) as tempoEstudo, ROUND(AVG(tempoEstudo)) as tempoMedio FROM estudo WHERE fkUsuario = ${idUsuario};`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);

@@ -8,4 +8,8 @@ router.post("/registrarMeta", function (req, res) {
     metaController.registrarMeta(req, res);
 })
 
+router.get("/buscarMetasPorUsuario/:idUsuario", function (req, res) {
+  metaController.buscarMetasPorUsuario(req, res);
+});
+
 module.exports = router;
