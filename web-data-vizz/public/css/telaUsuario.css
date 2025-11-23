@@ -2,6 +2,19 @@
     box-sizing: border-box;
 }
 
+.fade-in {
+    opacity: 0;
+    transform: translate(20px);
+    animation: fadeInUp 0.8s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 body {
     margin: 0;
     background-color: #f9f3ed;
@@ -84,22 +97,34 @@ header p {
 }
 
 .kpis {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
 
-.kpis .kpi1, .kpi2, .kpi3, .kpi4 {
+.kpis .kpi {
     display: flex;
     flex-direction: column;
     text-align: center;
     width: 200px;
     height: 200px;
-    background-color: #e9e9e9;
+    background-color: #F2F2F2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e3e3e3;
+    border-radius: 12px;
     margin-right: 60px;
+    transition: transform 0.25s ease, 
+    box-shadow 0.25s ease;
 }
 
+.kpi:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}   
+
 .kpis p {
-    font-size: 20px;
+    font-size: 16px;
+    color: #4c1f1d;
+    margin-bottom: 15px;
 }
 
 #dificuldade {
@@ -109,13 +134,15 @@ header p {
 }
 
 #qtdEstudo, #tempoEstudo, #tempoMedio {
-    font-size: 55px;
+    font-size: 50px;
     margin-top: 20px;
-    color: #6a2318;
+    color: #56070c;
 }
 
 #foco {
-    margin-top: 30px;
+    margin-top: 24px;
+    font-size: 16px;
+    color: #4c1f1d;
 }
 
 #span_dtFinal {
@@ -130,8 +157,17 @@ header p {
     align-items: center;
     width: 600px;
     height: 400px;
-    background-color: #e9e9e9;
-    margin: 100px 0 0 50px;
+    background-color: #f2f2f2;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin: 100px 0 0 270px;
+    transition: transform 0.25s ease, 
+    box-shadow 0.25s ease;
+}
+
+.fundoGrafico:hover {
+    transform: scale(1.02);
+    box-shadow: o 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .fundoGrafico p {
@@ -170,7 +206,10 @@ header p {
 .container_estudo {
     width: 500px;
     height: 580px;
-    background-color: #e9e9e9;
+    background-color: #F2F2F2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e3e3e3;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -209,19 +248,22 @@ header p {
     height: 55px;
     margin-top: 7px;
     color: black;
+    border-radius: 12px;
 }
 
 .dificuldade select {
     width: 400px;
     height: 55px;
     margin-top: 7px;
+    border-radius: 12px;
 }
 
 .container_estudo button {
-    width: 40%;
+    width: 40%; 
     height: 7%;
     background-color: #4f0f11;
     border: 0;
+    border-radius: 12px;
     margin-top: 20px;
     color: #f9f3ed;
     font-size: 17px;
@@ -253,7 +295,31 @@ header p {
 .container_historico .tabela {
     width: 1100px;
     height: 300px;
-    background-color: #e9e9e9;
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e3e3e3;
+    border-radius: 12px;
+}
+
+.tabela {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.coluna {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.coluna h2 {
+    margin-bottom: 30px;
+}
+
+.coluna span {
+    margin-bottom: 20px;
+    font-size: 20px;
 }
 
 .container_historico h1 {
@@ -262,15 +328,28 @@ header p {
 
 .nova_meta {
     align-self: flex-start;
-    margin: 120px 0 0 115px;
+    margin: 50px 0 0 115px;
     display: flex;
     flex-direction: column;
+}
+
+.container_novaMeta {
+    display: flex;
+    height: 220px;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e3e3e3;
+    border-radius: 12px;
+
 }
 
 .formulario_novaMeta {
     display: flex;
     flex-direction: row ;
     font-size: 17px;
+    margin-left: 20px;
 }
 
 .formulario_novaMeta input {
@@ -297,7 +376,6 @@ header p {
     margin: 10px 0 0 430px;
     font-size: 20px;
     opacity: 0;
-
 }
 
 .erroMeta {

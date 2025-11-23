@@ -59,28 +59,28 @@
     <!--Dashboard-->
     <section class="dashboard" id="dashboard">
         <div class="kpis">
-            <div class="kpi1" id="kpi1">
+            <div class="kpi fade-in" id="kpi1" style="animation-delay: 0.1s;">
                 <p>Dias totais estudados</p>
                 <b id="qtdEstudo"><span>7</span></b>
             </div>
 
-            <div class="kpi2" id="kpi2">
+            <div class="kpi fade-in" id="kpi2" style="animation-delay: 0.2s;">
                 <p>Maior dificuldade</p>
                 <b id="dificuldade"><span>Arcada</span></b>
                 <span id="foco">Foque mais nisso</span>
             </div>
 
-            <div class="kpi3" id="kpi3">
+            <div class="kpi fade-in" id="kpi3" style="animation-delay: 0.3s;">
                 <p>Tempo total estudado</p>
                 <b id="tempoEstudo"><span>40</span></b>
             </div>
 
-            <div class="kpi4" id="kpi4">
+            <div class="kpi fade-in" id="kpi4" style="animation-delay: 0.4s;">
                 <p>Tempo médio por estudo</p>
                 <b id="tempoMedio"><span>21</span></b>
             </div>
         </div>
-        <div class="fundoGrafico">
+        <div class="fundoGrafico fade-in" style="animation-delay: 0.6s">
             <p>Total de metas atuais</p>
             <div class="graficoProgresso">
                 <canvas id="graficoProgresso"></canvas>
@@ -95,7 +95,7 @@
 
     <!--Estudo-->
     <section class="estudo" id="estudo">
-        <div class="container_estudo">
+        <div class="container_estudo fade-in">
             <h1>Insira um novo estudo</h1>
             <label class="dtEstudo">
                 Data do estudo
@@ -118,56 +118,87 @@
             <div id="div_erroCampo" class="erroCampo">Preencha todos os campos!</div>
             <button onclick="registrarEstudo()"><b>Registrar estudo</b></button>
         </div>
-        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, provident!</span>
+        <span class="fade-in">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, provident!</span>
     </section>
     <!--Fim Estudo-->
 
     <!--Metas-->
-    <section class="meta" id="meta">
-        <div class="container_historico">
-            <h1>Minhas metas</h1>
-            <div class="tabela"></div>
-        </div>
-        <div class="nova_meta">
-            <h1>Nova meta</h1>
-            <div class="formulario_novaMeta">
-                <label>
-                    Prazo de início
-                    <input type="date" id="input_dtInicio">
-                </label>
-                <label>
-                    Prazo final
-                    <input type="date" id="input_dtFinal">
-                </label>
-                <label>
-                    Dias de estudo
-                    <input type="text" id="input_totalDia">
-                </label>
+    <section class="meta fade-in" id="meta">
+        <div class="container_historico fade-in">
+            <h1>Últimas 4 metas</h1>
+            <div class="tabela">
+                <div class="coluna">
+                    <h2>Ordem</h2>
+                    <span><b>Mais recente</b></span>
+                    <span>-</span>
+                    <span>-</span>
+                    <span><b>Mais antiga</b></span>
+                </div>
+                <div class="coluna">
+                    <h2>Data de início</h2>
+                    <span>10/11/2025</span>
+                    <span>10/11/2025</span>
+                    <span>10/11/2025</span>
+                    <span>10/11/2025</span>
+                </div>
+                <div class="coluna">
+                    <h2>Data final</h2>
+                    <span>12/11/2025</span>
+                    <span>12/11/2025</span>
+                    <span>12/11/2025</span>
+                    <span>12/11/2025</span>
+                </div>
+                <div class="coluna">
+                    <h2>Total de dias</h2>
+                    <span>20</span>
+                    <span>20</span>
+                    <span>20</span>
+                    <span>20</span>
+                </div>
             </div>
+        </div>
+        <div class="nova_meta fade-in">
+            <h1>Nova meta</h1>
+            <div class="container_novaMeta fade-in">
+                <div class="formulario_novaMeta">
+                    <label>
+                        Prazo de início
+                        <input type="date" id="input_dtInicio">
+                    </label>
+                    <label>
+                        Prazo final
+                        <input type="date" id="input_dtFinal">
+                    </label>
+                    <label>
+                        Dias de estudo
+                        <input type="text" id="input_totalDia">
+                    </label>
+                </div>
 
-            <button onclick="registrarMeta()"><b>Registrar meta</b></button>
-            <span class="metaRegistrada" id="metaRegistrada">Meta registrada!</span>
-            <span class="erroMeta" id="erroMeta">Preencha todos os campos!</span>
+                <button onclick="registrarMeta()" class="fade-in"><b>Registrar meta</b></button>
+                <span class="metaRegistrada" id="metaRegistrada">Meta registrada!</span>
+                <span class="erroMeta" id="erroMeta">Preencha todos os campos!</span>
+            </div>
         </div>
     </section>
     <!--Fim Metas-->
 
     <!--Configurações-->
     <section class="configuracao" id="configuracao">
-        <div class="topo">
+        <div class="topo fade-in">
             <h1>Perfil</h1>
             <img src="assets/Logotipo_footer.png">
         </div>
 
-        <label>
+        <label class="fade-in">
             <b>Nome</b>
             <input type="text" id="input_nomeConfig">
         </label>
-        <label>
+        <label class="fade-in">
             <b>Sobrenome</b>
             <input type="text" id="input_sobrenomeConfig">
         </label>
-        <label>
+        <label class="fade-in">
             <b>Nível</b>
             <select id="select_nivelConfig">
                 <option value="Iniciante">Iniciante</option>
