@@ -24,22 +24,6 @@ function registrarMeta(req, res) {
 
                     if (resultadoRegistrarMeta.length == 1) {
                         console.log(resultadoRegistrarMeta);
-
-                        /* aquarioModel.buscarAquariosPorEmpresa(resultadoRegistrarMeta[0].idUsuario)
-                            .then((resultadoAquarios) => {
-                                if (resultadoAquarios.length >= 0) {
-                                    res.json({
-                                        idUsuario: resultadoRegistrarMeta[0].idUsuario,
-                                        email: resultadoRegistrarMeta[0].email,
-                                        nome: resultadoRegistrarMeta[0].nome,
-                                        senha: resultadoRegistrarMeta[0].senha,
-                                        //aquarios: resultadoAquarios
-                                    });
-                                } else {
-                                    res.status(204).json({ aquarios: [] });
-                                }
-                            })
-                        */
                         
                     } else if (resultadoRegistrarMeta.length == 0) {
                         res.status(403).send("Registro(s) inválido(s)");

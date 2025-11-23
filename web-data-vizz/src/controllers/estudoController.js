@@ -25,22 +25,6 @@ function registrarEstudo(req, res) {
                     if (resultadoRegistrarEstudo.length == 1) {
                         console.log(resultadoRegistrarEstudo);
 
-                        /* aquarioModel.buscarAquariosPorEmpresa(resultadoRegistrarEstudo[0].idUsuario)
-                            .then((resultadoAquarios) => {
-                                if (resultadoAquarios.length >= 0) {
-                                    res.json({
-                                        idUsuario: resultadoRegistrarEstudo[0].idUsuario,
-                                        email: resultadoRegistrarEstudo[0].email,
-                                        nome: resultadoRegistrarEstudo[0].nome,
-                                        senha: resultadoRegistrarEstudo[0].senha,
-                                        //aquarios: resultadoAquarios
-                                    });
-                                } else {
-                                    res.status(204).json({ aquarios: [] });
-                                }
-                            })
-                        */
-
                     } else if (resultadoRegistrarEstudo.length == 0) {
                         res.status(403).send("Registro(s) inválido(s)");
                     } else {

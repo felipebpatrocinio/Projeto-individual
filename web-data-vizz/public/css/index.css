@@ -22,7 +22,6 @@ header {
     font-size: 20px;
 }
 
-
 /* Seção 1 - O que é o violino? */
 
 .sobre_violino {
@@ -34,6 +33,7 @@ header {
 }
 
 .sobre_violino h1 {
+    margin-left: 2%;
     font-size: 40px;
 }
 
@@ -42,7 +42,13 @@ header {
 }
 
 .sv_conteudo {
-    margin: 100px 60px 0 100px;
+    margin: 100px 60px 0 80px;
+    width: 700px;
+}
+
+.sv_conteudo p {
+    font-size: 20px;
+    text-align: justify;
 }
 
 .sobre_violino img {
@@ -99,9 +105,10 @@ header {
 }
 
 .desafio_aprender {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+    width: 1000px;
+    text-align: center;
+    margin-top: 20px;
 }
 
 
@@ -121,14 +128,20 @@ header {
 
 .sobre_mim h1 {
     font-size: 40px;
+    margin-left: 2%;
 }
 
-.sobre_mim span {
+.sobre_mim .textoSobreMim {
     font-size: 18px;
+    text-align: justify;
 }
 
 .sm_conteudo {
+    display: flex;
+    width: 650px;
+    flex-direction: column;
     margin-left: 70px;
+    text-align: justify;
 }
 
 .sobre_mim img {
@@ -137,7 +150,15 @@ header {
     margin-right: 70px;
 }
 
-/* Fim da seção 3 */
+.sm_conteudo p {
+    font-size: 18px;
+}
+
+.p {
+    margin-left: 2%;
+}
+
+/* Fim da seção 3 - Sobre mim */
 
 
 /* Seção 4 - Propostas do projeto */

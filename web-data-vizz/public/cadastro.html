@@ -193,7 +193,7 @@
                         console.log(`#ERRO: ${resposta}`);
                     });
 
-                return false;
+                
 
                 div_erro_senha.style.opacity = "0";
                 div_erro_confirmacao.style.opacity = "0";
@@ -201,6 +201,8 @@
                 div_erro_campo.style.color = "green";
                 div_erro_campo.innerHTML = "Seu cadastro foi feito com sucesso!";
                 window.location.href = "login.html";
+
+                return false;
             }
         }
     }

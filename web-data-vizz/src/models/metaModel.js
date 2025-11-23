@@ -14,7 +14,7 @@ function registrarMeta(dtInicio, dtFinal, totalDia, fkUsuario) {
 
 function buscarMetasPorUsuario(idUsuario) {
 
-  var instrucaoSql = `SELECT SUM(totalDia) as totalMeta FROM meta WHERE fkUsuario = ${idUsuario};`;
+  var instrucaoSql = `SELECT SUM(totalDia) as totalMeta, MAX(DATE(dtFinal)) as dtFinal FROM meta WHERE fkUsuario = ${idUsuario};`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);

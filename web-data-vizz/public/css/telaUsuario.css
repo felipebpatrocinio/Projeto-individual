@@ -85,9 +85,10 @@ header p {
 
 .kpis {
     display: flex;
+    justify-content: space-between;
 }
 
-.kpis .kpi1, .kpi2, .kpi3 {
+.kpis .kpi1, .kpi2, .kpi3, .kpi4 {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -101,14 +102,20 @@ header p {
     font-size: 20px;
 }
 
-.kpis span {
-    font-size: 50px;
+#dificuldade {
+    font-size: 40px;
     margin-top: 20px;
     color: #6a2318;
 }
 
-.kpi4 span {
-    font-size: 40px;
+#qtdEstudo, #tempoEstudo, #tempoMedio {
+    font-size: 55px;
+    margin-top: 20px;
+    color: #6a2318;
+}
+
+#foco {
+    margin-top: 30px;
 }
 
 #span_dtFinal {
@@ -116,31 +123,36 @@ header p {
     font-size: 17px;
 }
 
-.kpis .kpi4 {
+.fundoGrafico {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    width: 350px;
+    justify-content: flex-start;
+    align-items: center;
+    width: 600px;
+    height: 400px;
+    background-color: #e9e9e9;
+    margin: 100px 0 0 50px;
+}
+
+.fundoGrafico p {
+    font-size: 30px;
+}
+
+.fundoGrafico span {
+    font-size: 20px;
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+
+.graficoProgresso {
+    margin-top: 20px;
     height: 200px;
-    background-color: #e9e9e9;
+    width: 400px;
 }
 
-.graficos {
-    display: flex;
-    margin-top: 100px;
-}
-
-.graficos .grafico1 {
-    width: 550px;
+#graficoProgresso {
+    width: 400px;
     height: 400px;
-    background-color: #e9e9e9;
-    margin-right: 30px;
-}
-
-.graficos .grafico2 {
-    width: 550px;
-    height: 400px;
-    background-color: #e9e9e9;
 }
 
 /* Fim da Dashboard */

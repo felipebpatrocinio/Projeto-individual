@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/telaUsuario.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body onload="carregarPagina()">
@@ -60,30 +61,34 @@
         <div class="kpis">
             <div class="kpi1" id="kpi1">
                 <p>Dias totais estudados</p>
-                <b><span id="qtdEstudo"></span></b>
+                <b id="qtdEstudo"><span>7</span></b>
             </div>
 
             <div class="kpi2" id="kpi2">
                 <p>Maior dificuldade</p>
-                <span><b>Arcada</b></span>
-
+                <b id="dificuldade"><span>Arcada</span></b>
+                <span id="foco">Foque mais nisso</span>
             </div>
 
             <div class="kpi3" id="kpi3">
                 <p>Tempo total estudado</p>
-                <b><span id="tempoEstudo"></span></b>
+                <b id="tempoEstudo"><span>40</span></b>
             </div>
 
             <div class="kpi4" id="kpi4">
-                <p>Tempo médio de estudo</p>
-                <span><b id="tempoMedio"></b></span>
-                <span id="span_dtFinal">até 01/12/2025</span>
+                <p>Tempo médio por estudo</p>
+                <b id="tempoMedio"><span>21</span></b>
             </div>
         </div>
-        <div class="graficos">
-            <div class="grafico1">OI</div>
-            <div class="grafico2">OI</div>
+        <div class="fundoGrafico">
+            <p>Total de metas atuais</p>
+            <div class="graficoProgresso">
+                <canvas id="graficoProgresso"></canvas>
+            </div>
+            <span>Até 21/12/2025</span>
         </div>
+
+
     </section>
 
     <!--Fim Dashboard-->
@@ -178,12 +183,15 @@
 </html>
 
 <script>
+    var totalEstudo = 0;
+    var totalMeta = 0;
+
     function carregarPagina() {
         window.location.href = '#estudo';
         var nome = sessionStorage.NOME_USUARIO;
         mensagem_usuario.innerHTML = `Olá, ${nome}!`;
     }
-    
+
     function irParaDashboard() {
         dashboard.style.display = 'flex';
         estudo.style.display = 'none';
@@ -208,11 +216,11 @@
                     tempoMedio = json.tempoMedio;
                     console.log(tempoEstudo, totalEstudo, tempoMedio)
                     document.getElementById('qtdEstudo').textContent = totalEstudo;
-                    document.getElementById('tempoEstudo').textContent = tempoEstudo;
+                    totalHora = Math.floor(tempoEstudo / 60);
+                    document.getElementById('tempoEstudo').textContent = `${totalHora} H`;
                     document.getElementById('tempoMedio').textContent = tempoMedio;
                 })
 
-                 
             } else {
 
                 console.log("Erro ao tentar coletar dados de KPI's");
@@ -239,8 +247,51 @@
 
                 resposta.json().then(json => {
                     console.log(json)
-                    totalMeta = json.totalMeta;
-                    console.log(totalMeta)
+                    totalMeta = Number(json.totalMeta);
+                    dtFinal = json.dtFinal;
+                    console.log(totalMeta, dtFinal)
+
+                    const ctx = document.getElementById('graficoProgresso').getContext('2d');
+
+                    const data = {
+                        labels: [''],
+                        datasets: [{
+                            label: 'Progresso',
+                            data: [totalEstudo],
+                            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                        }, {
+                            label: 'Restante',
+                            data: [totalMeta - totalEstudo],
+                            backgroundColor: 'rgba(201, 203, 207, 0.4)',
+                        }]
+                    };
+
+                    const graficoProgresso = new Chart(ctx, {
+                        type: 'bar',
+                        data: data,
+                        options: {
+                            indexAxis: 'y', // Para barras horizontais
+                            scales: {
+                                x: {
+                                    stacked: true, // Permite empilhar as barras (útil para progresso)
+                                    ticks: {
+                                        beginAtZero: true // Garante que o eixo comece em zero
+                                    },
+                                    grid: {
+                                        display: false
+                                    }
+
+                                },
+                                y: {
+                                    stacked: true, // Permite empilhar as barras (útil para progresso)
+                                    grid: {
+                                        display: false
+                                    }
+                                }
+                            }
+                        }
+                    });
+
                 })
 
             } else {
@@ -256,6 +307,10 @@
             console.log(erro);
             console.log('Entrei no catch');
         })
+
+        console.log(totalMeta, totalEstudo)
+
+        //  plotarGrafico()
 
     }
 
