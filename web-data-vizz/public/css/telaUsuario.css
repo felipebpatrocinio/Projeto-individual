@@ -227,6 +227,7 @@ header p {
     height: 10%;
     background: transparent;
     border: 1px solid black;
+    border-radius: 12px;
 }
 
 .dtEstudo, .tempoEstudo, .dificuldade  {
@@ -248,7 +249,6 @@ header p {
     height: 55px;
     margin-top: 7px;
     color: black;
-    border-radius: 12px;
 }
 
 .dificuldade select {
@@ -434,6 +434,7 @@ header p {
     border: 1px solid black;
     font-size: 17px;
     margin-top: 5px;
+    border-radius: 7px;
 }
 
 .configuracao select {
@@ -443,5 +444,6 @@ header p {
     border: 1px solid black;
     font-size: 17px;
     margin-top: 5px;
+    border-radius: 7px;
 }
 

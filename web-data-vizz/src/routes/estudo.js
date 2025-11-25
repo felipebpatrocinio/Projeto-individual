@@ -12,4 +12,8 @@ router.get("/buscarEstudosPorUsuario/:idUsuario", function (req, res) {
   estudoController.buscarEstudosPorUsuario(req, res);
 });
 
+router.get("/buscarDificuldadePorUsuario/:idUsuario", function (req, res) {
+  estudoController.buscarDificuldadePorUsuario(req, res);
+});
+
 module.exports = router;

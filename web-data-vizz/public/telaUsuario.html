@@ -85,10 +85,8 @@
             <div class="graficoProgresso">
                 <canvas id="graficoProgresso"></canvas>
             </div>
-            <span>Até 21/12/2025</span>
+            <span id="metaCumprida" style="color: green;">Parabéns! Meta alcançada.</span>
         </div>
-
-
     </section>
 
     <!--Fim Dashboard-->
@@ -118,45 +116,13 @@
             <div id="div_erroCampo" class="erroCampo">Preencha todos os campos!</div>
             <button onclick="registrarEstudo()"><b>Registrar estudo</b></button>
         </div>
-        <span class="fade-in">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, provident!</span>
+        <span class="fade-in" style="font-size: 22px;">No violino e na vida, a constância sempre gera
+            consistência.</span>
     </section>
     <!--Fim Estudo-->
 
     <!--Metas-->
     <section class="meta fade-in" id="meta">
-        <div class="container_historico fade-in">
-            <h1>Últimas 4 metas</h1>
-            <div class="tabela">
-                <div class="coluna">
-                    <h2>Ordem</h2>
-                    <span><b>Mais recente</b></span>
-                    <span>-</span>
-                    <span>-</span>
-                    <span><b>Mais antiga</b></span>
-                </div>
-                <div class="coluna">
-                    <h2>Data de início</h2>
-                    <span>10/11/2025</span>
-                    <span>10/11/2025</span>
-                    <span>10/11/2025</span>
-                    <span>10/11/2025</span>
-                </div>
-                <div class="coluna">
-                    <h2>Data final</h2>
-                    <span>12/11/2025</span>
-                    <span>12/11/2025</span>
-                    <span>12/11/2025</span>
-                    <span>12/11/2025</span>
-                </div>
-                <div class="coluna">
-                    <h2>Total de dias</h2>
-                    <span>20</span>
-                    <span>20</span>
-                    <span>20</span>
-                    <span>20</span>
-                </div>
-            </div>
-        </div>
         <div class="nova_meta fade-in">
             <h1>Nova meta</h1>
             <div class="container_novaMeta fade-in">
@@ -214,6 +180,7 @@
 </html>
 
 <script>
+    let graficoProgresso = null;
     var totalEstudo = 0;
     var totalMeta = 0;
 
@@ -250,6 +217,121 @@
                     totalHora = Math.floor(tempoEstudo / 60);
                     document.getElementById('tempoEstudo').textContent = `${totalHora} H`;
                     document.getElementById('tempoMedio').textContent = tempoMedio;
+
+
+                    return fetch(`/meta/buscarMetasPorUsuario/${idUsuario}`, {
+
+                    }).then(function (resposta) {
+                        console.log(resposta)
+                        console.log('Entrei no then da meta');
+
+                        if (resposta.ok) {
+                            console.log(resposta)
+
+                            resposta.json().then(json => {
+                                console.log(json)
+                                totalMeta = Number(json.totalMeta);
+                                dtFinal = json.dtFinal;
+                                console.log(totalMeta, dtFinal)
+                                restante = totalMeta - totalEstudo
+
+                                if (restante <= 0) {
+                                    metaCumprida.style.opacity = '1';
+                                } else {
+                                    metaCumprida.style.opacity = '0';
+                                }
+
+                                if (graficoProgresso !== null) {
+                                    graficoProgresso.destroy();
+                                }
+
+                                const ctx = document.getElementById('graficoProgresso').getContext('2d');
+
+                                const data = {
+                                    labels: [''],
+                                    datasets: [{
+                                        label: 'Progresso',
+                                        data: [totalEstudo],
+                                        backgroundColor: '#7CCF9A',
+                                        borderSkipped: false
+                                    }, {
+                                        label: 'Restante',
+                                        data: [restante],
+                                        backgroundColor: '#E5E5E5',
+                                        borderSkipped: false
+                                    }]
+                                };
+
+                                graficoProgresso = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: data,
+                                    options: {
+                                        indexAxis: 'y', // Para barras horizontais
+                                        scales: {
+                                            x: {
+                                                stacked: true, // Permite empilhar as barras (útil para progresso)
+                                                ticks: {
+                                                    beginAtZero: true // Garante que o eixo comece em zero
+                                                },
+                                                grid: {
+                                                    display: false
+                                                }
+
+                                            },
+                                            y: {
+                                                stacked: true, // Permite empilhar as barras (útil para progresso)
+                                                grid: {
+                                                    display: false
+                                                }
+                                            }
+                                        }
+                                    }
+                                });
+
+                            })
+
+                        } else {
+
+                            console.log("Erro ao tentar coletar dados das metas");
+
+                            resposta.text().then(texto => {
+                                console.error(texto);
+                            });
+                        }
+
+                    }).catch(function (erro) {
+                        console.log(erro);
+                        console.log('Entrei no catch');
+                    })
+                })
+
+            } else {
+
+                console.log("Erro ao tentar coletar dados de KPI's");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log('Entrei no catch');
+        })
+
+        fetch(`/estudo/buscarDificuldadePorUsuario/${idUsuario}`, {
+
+        }).then(function (resposta) {
+            console.log(resposta)
+            console.log('Entrei no then da dificuldade');
+
+            if (resposta.ok) {
+                console.log(resposta)
+
+                resposta.json().then(json => {
+                    console.log(json)
+                    maiorDificuldade = json.dificuldade;
+                    document.getElementById('dificuldade').textContent = `${maiorDificuldade}`;
                 })
 
             } else {
@@ -267,81 +349,10 @@
         })
 
 
-        fetch(`/meta/buscarMetasPorUsuario/${idUsuario}`, {
 
-        }).then(function (resposta) {
-            console.log(resposta)
-            console.log('Entrei no then da meta');
 
-            if (resposta.ok) {
-                console.log(resposta)
-
-                resposta.json().then(json => {
-                    console.log(json)
-                    totalMeta = Number(json.totalMeta);
-                    dtFinal = json.dtFinal;
-                    console.log(totalMeta, dtFinal)
-
-                    const ctx = document.getElementById('graficoProgresso').getContext('2d');
-
-                    const data = {
-                        labels: [''],
-                        datasets: [{
-                            label: 'Progresso',
-                            data: [totalEstudo],
-                            backgroundColor: 'rgba(75, 192, 192, 0.6)',
-                        }, {
-                            label: 'Restante',
-                            data: [totalMeta - totalEstudo],
-                            backgroundColor: 'rgba(201, 203, 207, 0.4)',
-                        }]
-                    };
-
-                    const graficoProgresso = new Chart(ctx, {
-                        type: 'bar',
-                        data: data,
-                        options: {
-                            indexAxis: 'y', // Para barras horizontais
-                            scales: {
-                                x: {
-                                    stacked: true, // Permite empilhar as barras (útil para progresso)
-                                    ticks: {
-                                        beginAtZero: true // Garante que o eixo comece em zero
-                                    },
-                                    grid: {
-                                        display: false
-                                    }
-
-                                },
-                                y: {
-                                    stacked: true, // Permite empilhar as barras (útil para progresso)
-                                    grid: {
-                                        display: false
-                                    }
-                                }
-                            }
-                        }
-                    });
-
-                })
-
-            } else {
-
-                console.log("Erro ao tentar coletar dados das metas");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-            console.log('Entrei no catch');
-        })
 
         console.log(totalMeta, totalEstudo)
-
-        //  plotarGrafico()
 
     }
 

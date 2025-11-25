@@ -20,7 +20,16 @@ function buscarEstudosPorUsuario(idUsuario) {
   return database.executar(instrucaoSql);
 } 
 
+function buscarDificuldadePorUsuario(idUsuario) {
+
+  var instrucaoSql = `SELECT dificuldade, COUNT(*) AS quantidade FROM estudo WHERE fkUsuario = ${idUsuario} GROUP BY dificuldade ORDER BY quantidade DESC LIMIT 1;`;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+} 
+
 module.exports = {
     registrarEstudo,
-    buscarEstudosPorUsuario
+    buscarEstudosPorUsuario,
+    buscarDificuldadePorUsuario
 };

@@ -2,6 +2,23 @@ header {
     position: sticky;
 }
 
+img:hover {
+    transform: scale(1.05);
+}   
+
+.fade-in {
+    opacity: 0;
+    transform: translate(20px);
+    animation: fadeInUp 0.8s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .inicio {
     display: flex;
     background: transparent;
@@ -27,7 +44,7 @@ header {
 .sobre_violino {
     display: flex;
     background: transparent;
-    justify-content: space-between  ;
+    justify-content: space-between;
     align-items: flex-start;
     height: 600px;
 }
@@ -54,6 +71,7 @@ header {
 .sobre_violino img {
     margin: 70px 0 0 70px;
     border-radius: 22px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Fim da seção 1 */
@@ -64,7 +82,7 @@ header {
 .aprender_violino {
     display: flex;
     background: transparent;
-    flex-direction: column  ;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     height: 600px;
@@ -92,16 +110,19 @@ header {
     flex-direction: column;
 }
 
-.beneficio1, .beneficio2, .beneficio3, .beneficio4 {
-    display: flex;  
+.beneficio1,
+.beneficio2,
+.beneficio3,
+.beneficio4 {
+    display: flex;
     align-items: center;
     color: #2f913f;
     font-size: 20px;
 }
 
 .beneficio img {
-    width: 30px;    
-    height: 30px;   
+    width: 30px;
+    height: 30px;
 }
 
 .desafio_aprender {
@@ -148,6 +169,7 @@ header {
     height: 450px;
     border-radius: 18px;
     margin-right: 70px;
+    box-shadow: 3px 8px rgba(0, 0, 0, 0.5);
 }
 
 .sm_conteudo p {
@@ -192,7 +214,7 @@ header {
 .proposta1 {
     background-image: url(1.png);
     background-size: cover;
-}   
+}
 
 .proposta2 {
     background-image: url(2.png);
@@ -204,7 +226,9 @@ header {
     background-size: cover;
 }
 
-.proposta1, .proposta2, .proposta3 {
+.proposta1,
+.proposta2,
+.proposta3 {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -213,16 +237,21 @@ header {
     width: 300px;
     height: 420px;
     border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
-.proposta1 h1, .proposta2 h1, .proposta3 h1 {
+.proposta1 h1,
+.proposta2 h1,
+.proposta3 h1 {
     font-size: 30px;
     margin: 0 0 20px 10px;
     color: #bb944b;
-/* color: #f9f3ed; */
+    /* color: #f9f3ed; */
 }
 
-.proposta1 span, .proposta2 span, .proposta3 span {
+.proposta1 span,
+.proposta2 span,
+.proposta3 span {
     margin: 0 0 70px 10px;
 }
 
@@ -252,7 +281,7 @@ header {
 
 .ods h1 {
     font-size: 40px;
-}   
+}
 
 .ods_conteudo img {
     height: 300px;
@@ -273,7 +302,8 @@ header {
     align-items: center;
 }
 
-.ods3 span, .ods4 span {
+.ods3 span,
+.ods4 span {
     font-size: 20px;
     margin-bottom: 10px;
 }
@@ -303,7 +333,8 @@ header {
     margin-top: 0;
 }
 
-.cttNome, .cttEmail {
+.cttNome,
+.cttEmail {
     background: transparent;
     width: 400px;
     height: 40px;

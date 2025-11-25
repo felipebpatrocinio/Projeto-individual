@@ -58,7 +58,25 @@ function buscarEstudosPorUsuario(req, res) {
     });
 }
 
+function buscarDificuldadePorUsuario(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    estudoModel.buscarDificuldadePorUsuario(idUsuario).then((resultado) => {
+        if (resultado.length >= 0) {
+            res.status(200).send(resultado[0])
+
+        } else {
+            res.status(204).json([]);
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as dificuldades: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
     registrarEstudo,
-    buscarEstudosPorUsuario
+    buscarEstudosPorUsuario,
+    buscarDificuldadePorUsuario
 }
